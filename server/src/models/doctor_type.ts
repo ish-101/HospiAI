@@ -1,9 +1,9 @@
-import mongoose, { model, Schema } from 'mongoose';
+import mongoose, { model, Schema, Types } from 'mongoose';
 
 export const name = 'Doctor_Type';
 
 export const schema = new Schema({
-    type: String
+	type: String,
 });
 
 const DoctorType = model(name, schema);
