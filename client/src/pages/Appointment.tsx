@@ -1,9 +1,11 @@
 import React from 'react';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Search } from '../components/Search';
+import {Filter} from '../components/Filter';
+import {Schedule} from '../components/Schedule';
 // import { DayPilot, DayPilotScheduler } from "daypilot-pro-react";
 
-interface Appointment {
+export interface Appointment {
 	doctor_id: {
 		name: String;
 		type: {
@@ -20,6 +22,7 @@ class AppointmentPage extends React.Component {
 		query: '',
 		appointments: null,
 		types: null,
+		dsel: [true, true, false, false]
 	};
 	handleChange = async (event: any) => {
 		await this.setState({ query: event.target.value });
@@ -45,37 +48,6 @@ class AppointmentPage extends React.Component {
 			appointments: data.appointments,
 		});
 	};
-	renderTypes = (props: any) => {
-		let els = [];
-		const types = props.types;
-		if (types !== null && types !== undefined && types[0] !== undefined) {
-			for (let type of types) {
-				els.push(<div>{type.type}</div>);
-			}
-		}
-		return <div>{els}</div>;
-	};
-	renderAppointments = (props: any) => {
-		let els = [];
-		const appointments: Appointment[] = props.appointments;
-		if (appointments !== null && appointments !== undefined  && appointments[0] !== undefined) {
-			for (let appointment of appointments) {
-				els.push(
-					<div>
-						<div>Start Time: {appointment.start_time}</div>
-						<div>End Time: {appointment.end_time}</div>
-						<div>Doctor Name: {appointment.doctor_id.name}</div>
-						<div>
-							Doctor Type: {appointment.doctor_id.type.type}
-						</div>
-						<div>Doctor Phone: {appointment.doctor_id.cell}</div>
-						<br />
-					</div>
-				);
-			}
-		}
-		return <div>{els}</div>;
-	};
 	render() {
 		return (
 			<div>
@@ -84,11 +56,7 @@ class AppointmentPage extends React.Component {
 					handleChange={this.handleChange}
 					handleSubmit={this.handleSubmit}
 				/>
-				<this.renderTypes types={this.state.types} />
-				<br />
-				<this.renderAppointments
-					appointments={this.state.appointments}
-				/>
+				<Schedule dtypes={this.state.types} dsel={this.state.dsel} appointments={this.state.appointments} />
 			</div>
 		);
 	}
