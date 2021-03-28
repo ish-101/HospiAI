@@ -3,6 +3,7 @@ import { connect as db_connect, ConnectOptions } from 'mongoose';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import appointment from './controllers/appointment';
+import precautions from './controllers/precautions';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ const run = async () => {
 		app.use(express.json());
 
 		app.use('/appointment', appointment);
+		app.use('/precautions', precautions);
 
 		const PORT = 3001;
 		app.listen(PORT, () => {
