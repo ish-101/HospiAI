@@ -1,0 +1,18 @@
+.dia {
+    padding: 3rem;
+    .accordion__button {
+        background-color: rgba($color: darkred, $alpha: 0.125);
+    }
+    .pre {
+        padding: 2rem;
+        .pre-item {
+            margin: 0 0.5rem;
+            display: inline-block;
+            padding: 0.5rem;
+            background-color: darkgoldenrod;
+            color: white;
+            font-weight: bold;
+            border-radius: 0.5rem;
+        }
+    }
+}

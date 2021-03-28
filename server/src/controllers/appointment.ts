@@ -17,7 +17,7 @@ app.post('/symptoms', async (req: Request, res: Response) => {
 			(doctor_type: any) => doctor_type.type
 		);
 
-		const URL = `https://api.openai.com/v1/engines/davinci/search`;
+		const URL = `https://api.openai.com/v1/engines/ada/search`;
 		const HEADERS = {
 			Authorization: `Bearer ${process.env['OPENAI_KEY']}`,
 			'Content-Type': 'application/json',

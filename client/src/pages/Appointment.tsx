@@ -1,8 +1,9 @@
 import React from 'react';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+// import { DayPilot, DayPilotScheduler } from "daypilot-pro-react";
 
 interface Appointment {
-	doctor: {
+	doctor_id: {
 		name: String;
 		type: {
 			type: String;
@@ -55,7 +56,7 @@ class AppointmentPage extends React.Component {
 	};
 	renderAppointments = (props: any) => {
 		let els = [];
-		const appointments = props.appointments;
+		const appointments: Appointment[] = props.appointments;
 		if (appointments !== null) {
 			for (let appointment of appointments) {
 				els.push(
@@ -84,13 +85,13 @@ class AppointmentPage extends React.Component {
 					/>
 					<input type="submit" />
 				</form>
-				<pre>
+				<div>
 					<this.renderTypes types={this.state.types} />
 					<br />
 					<this.renderAppointments
 						appointments={this.state.appointments}
 					/>
-				</pre>
+				</div>
 			</div>
 		);
 	}

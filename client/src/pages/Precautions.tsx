@@ -1,7 +1,9 @@
 import React from 'react';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Diagnosis } from '../components/Diagnosis';
 
-interface Disease {
+
+export interface Disease {
 	type: String;
 	description: String;
 	precautions: [String];
@@ -35,29 +37,6 @@ class PrecautionsPage extends React.Component {
 			diseases: data,
 		});
 	};
-	renderDiseases = (props: any) => {
-		let els = [];
-		const diseases = props.diseases;
-		if (diseases !== null) {
-			for (let disease of diseases) {
-				let prec_els: any = [];
-				if (disease.precautions != null) {
-					for (let precaution of disease.precautions) {
-						prec_els.push(<>{precaution}, </>);
-					}
-				}
-				els.push(
-					<div>
-						<div>{disease.type}</div>
-						<div>{disease.description}</div>
-						<div>{prec_els}</div>
-						<br />
-					</div>
-				);
-			}
-		}
-		return <div>{els}</div>;
-	};
 	render() {
 		return (
 			<div>
@@ -68,9 +47,9 @@ class PrecautionsPage extends React.Component {
 					/>
 					<input type="submit" />
 				</form>
-				<pre>
-					<this.renderDiseases diseases={this.state.diseases} />
-				</pre>
+				<div>
+					<Diagnosis diseases={this.state.diseases} />
+				</div>
 			</div>
 		);
 	}
