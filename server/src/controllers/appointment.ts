@@ -41,7 +41,7 @@ app.post('/symptoms', async (req: Request, res: Response) => {
 		const chosen_category_ids = chosen_categories.map((c: any) => c._id);
 
 		const chosen_doctors_data = await Doctor.find({
-			type: { $in: chosen_category_ids.splice(0, 3) },
+			type: { $in: chosen_category_ids },
 		}).exec();
 		const chosen_doctors = chosen_doctors_data.map((c: any) => c._id);
 
