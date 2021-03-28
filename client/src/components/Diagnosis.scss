@@ -1,18 +1,49 @@
 .dia {
-    padding: 3rem;
-    .accordion__button {
-        background-color: rgba($color: darkred, $alpha: 0.125);
-    }
-    .pre {
-        padding: 2rem;
-        .pre-item {
-            margin: 0 0.5rem;
-            display: inline-block;
-            padding: 0.5rem;
-            background-color: darkgoldenrod;
-            color: white;
-            font-weight: bold;
-            border-radius: 0.5rem;
-        }
-    }
+	padding: 3rem;
+	.acc {
+		.accordion__heading {
+			background-color: rgba($color: darkred, $alpha: 0.125);
+			padding: 1rem 2rem;
+		}
+		.pre {
+			padding: 2rem;
+			.pre-item {
+				margin: 0 0.5rem;
+				display: inline-block;
+				padding: 0.5rem;
+				background-color: darkgoldenrod;
+				color: white;
+				font-weight: bold;
+				border-radius: 0.5rem;
+				font-size: 2rem;
+			}
+		}
+		.acc-item {
+			.accordion__button {
+				font-size: 1.25rem;
+			}
+			.accordion__panel {
+				min-height: 40vh;
+			}
+			.desc {
+				padding: 2rem;
+				font-size: 1.5rem;
+			}
+			.like {
+				display: inline-block;
+				padding: 0.5rem 0.75rem;
+				margin: 0 0.75rem;
+				border-radius: 0.25rem;
+				color: black;
+				font-weight: bold;
+				opacity: 0.75;
+			}
+			.most-like {
+				background-color: palevioletred;
+			}
+			.less-like {
+				background-color: aqua;
+			}
+		}
+	}
 }

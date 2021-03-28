@@ -1,5 +1,6 @@
 import React from 'react';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Search } from '../components/Search';
 // import { DayPilot, DayPilotScheduler } from "daypilot-pro-react";
 
 interface Appointment {
@@ -47,7 +48,7 @@ class AppointmentPage extends React.Component {
 	renderTypes = (props: any) => {
 		let els = [];
 		const types = props.types;
-		if (types !== null) {
+		if (types !== null && types !== undefined && types[0] !== undefined) {
 			for (let type of types) {
 				els.push(<div>{type.type}</div>);
 			}
@@ -57,7 +58,7 @@ class AppointmentPage extends React.Component {
 	renderAppointments = (props: any) => {
 		let els = [];
 		const appointments: Appointment[] = props.appointments;
-		if (appointments !== null) {
+		if (appointments !== null && appointments !== undefined  && appointments[0] !== undefined) {
 			for (let appointment of appointments) {
 				els.push(
 					<div>
@@ -78,20 +79,16 @@ class AppointmentPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input
-						value={this.state.query}
-						onChange={this.handleChange}
-					/>
-					<input type="submit" />
-				</form>
-				<div>
-					<this.renderTypes types={this.state.types} />
-					<br />
-					<this.renderAppointments
-						appointments={this.state.appointments}
-					/>
-				</div>
+				<Search
+					query={this.state.query}
+					handleChange={this.handleChange}
+					handleSubmit={this.handleSubmit}
+				/>
+				<this.renderTypes types={this.state.types} />
+				<br />
+				<this.renderAppointments
+					appointments={this.state.appointments}
+				/>
 			</div>
 		);
 	}

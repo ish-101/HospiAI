@@ -1,7 +1,7 @@
 import React from 'react';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { Diagnosis } from '../components/Diagnosis';
-
+import { Search } from '../components/Search';
 
 export interface Disease {
 	type: String;
@@ -40,13 +40,11 @@ class PrecautionsPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit}>
-					<input
-						value={this.state.query}
-						onChange={this.handleChange}
-					/>
-					<input type="submit" />
-				</form>
+				<Search
+					query={this.state.query}
+					handleChange={this.handleChange}
+					handleSubmit={this.handleSubmit}
+				/>
 				<div>
 					<Diagnosis diseases={this.state.diseases} />
 				</div>
